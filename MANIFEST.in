@@ -1,0 +1,10 @@
+include README.md
+include LICENSE
+include pyproject.toml
+recursive-include docs *.md
+recursive-include benchmarks *.py *.ipynb *.md
+recursive-include notebooks *.ipynb
+recursive-include tests *.py *.sha256
+recursive-include tests/baselines *.py
+recursive-include tools *.py
+recursive-include tree_coarsening py.typed
