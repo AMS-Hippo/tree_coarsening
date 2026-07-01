@@ -1,20 +1,6 @@
 # tree-coarsening
 
-Exact, reversible coarsening of labeled directed rooted trees represented as
-NetworkX `DiGraph` objects.
-
-The implementation targets encoded graph schema **1.0**. The frozen normative
-contract is [`docs/api/schema1.md`](docs/api/schema1.md).
-
-
-## Documentation map
-
-Start with [`docs/README.md`](docs/README.md) if you are unsure which
-document to read. In brief, `docs/api/schema1.md` is the frozen normative
-contract; `README.md` is user-facing; `docs/contributing/coarseners.md` is for
-new coarsener authors; `docs/audit/contract_traceability.md` maps contract
-clauses to code and tests; `docs/audit/SCHEMA_CLARIFICATIONS.md` records schema clarifications;
-`tests/baselines/` contains protected baseline artifacts used by tests.
+Simple module for taking labeled trees and "coarsening" them by contracting connected components in a reversible way. 
 
 ## Executable examples
 
@@ -32,7 +18,7 @@ From a fresh checkout, install the package into the notebook kernel first:
 python -m pip install -e .
 ```
 
-## Raw inputs
+## Expected format
 
 A raw input is a nonempty directed rooted tree. Every node supplies:
 
@@ -42,18 +28,6 @@ node["time"]   # finite real, excluding bool
 node["uid"]    # unique, stable, hashable identifier
 ```
 
-Additional raw node and graph attributes round-trip. Raw edge attributes are not
-part of the round-trip guarantee.
-
-```python
-import networkx as nx
-
-G = nx.DiGraph()
-G.add_node("root", label="P", time=0.0, uid="root")
-G.add_node("left", label="C", time=1.0, uid="left")
-G.add_node("right", label="C", time=2.0, uid="right")
-G.add_edges_from([("root", "left"), ("root", "right")])
-```
 
 ## Common public API
 
@@ -249,3 +223,13 @@ The repository also freezes the v0.12.1 BPE reference implementation under
 `tests/baselines/`. Tests enforce byte identity of the Numba kernel, AST identity
 of the unchanged Python scoring/index/contraction core, and differential backend
 parity.
+
+## Documentation map
+
+Start with [`docs/README.md`](docs/README.md) if you are unsure which
+document to read. In brief, `docs/api/schema1.md` is the frozen normative
+contract; `README.md` is user-facing; `docs/contributing/coarseners.md` is for
+new coarsener authors; `docs/audit/contract_traceability.md` maps contract
+clauses to code and tests; `docs/audit/SCHEMA_CLARIFICATIONS.md` records schema clarifications;
+`tests/baselines/` contains protected baseline artifacts used by tests.
+
