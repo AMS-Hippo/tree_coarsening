@@ -2,9 +2,9 @@
 
 Simple module for taking labeled trees and "coarsening" them by contracting connected components in a reversible way. 
 
-## Executable examples
+## Tutorial examples
 
-The notebooks under `notebooks/` are small, source-checkout examples:
+The notebooks under `notebooks/` are meant to illustrate the syntax:
 
 - `star_coarsener_example.ipynb` — parametric sibling-star coarsening.
 - `edge_bpe_coarsener_example.ipynb` — ordinary edge-BPE coarsening.
@@ -20,7 +20,7 @@ python -m pip install -e .
 
 ## Expected format
 
-A raw input is a nonempty directed rooted tree. Every node supplies:
+The module expects nonempty directed rooted trees with the following information: 
 
 ```python
 node["label"]  # str
